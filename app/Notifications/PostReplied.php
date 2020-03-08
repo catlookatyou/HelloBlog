@@ -32,7 +32,7 @@ class PostReplied extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'mail'];
     }
 
     /**
@@ -57,10 +57,14 @@ class PostReplied extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->to($this->comment->user->email)
                     ->line('您有新的回應!')
                     ->action('查看', url('/'))
                     ->line('Thank you for using our application!');
+    }
+
+    public function routeNotificationForMail()
+    {
+        return $this->comment->user->email;
     }
 
     /**
