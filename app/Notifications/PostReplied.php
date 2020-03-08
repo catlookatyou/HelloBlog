@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Comment;
 
-class PostReplied extends Notification
+class PostReplied extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -57,8 +57,9 @@ class PostReplied extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->to($this->comment->user->email)
+                    ->line('您有新的回應!')
+                    ->action('查看', url('/'))
                     ->line('Thank you for using our application!');
     }
 

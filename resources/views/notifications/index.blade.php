@@ -21,6 +21,19 @@
                     <a href="{{ route('posts.show', ['id' => $notification->data['post_id']]) }}">{{ $notification->data['post_title'] }}</a>
 
                     {{-- 回复删除按钮 --}}
+                    <div class="float-right">
+                            <form action="{{ route('notifications.destroy', ['id' => $notification->id]) }}" method="POST">
+                                <span class="ml-2">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                        <span class="pl-1">刪除</span>
+                                    </button>
+                                </span>
+                            </form>
+                    </div>
+                    
                     <span class="meta pull-right float-right" title="{{ $notification->created_at }}">
                         <span class="glyphicon glyphicon-clock" aria-hidden="true"></span>
                         {{ $notification->created_at->diffForHumans() }}

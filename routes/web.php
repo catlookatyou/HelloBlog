@@ -42,5 +42,5 @@ Route::prefix('login/social')->name('social.')->group(function(){
 Route::get('likes/{post_id}', 'LikeController@like')->name('like');
 Route::get('likes', 'LikeController@show')->name('showLike');
 
-Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+Route::resource('notifications', 'NotificationsController', ['only' => ['index', 'destroy']]);
 //Route::get('/home', 'HomeController@index')->name('home');
