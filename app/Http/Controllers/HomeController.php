@@ -18,6 +18,12 @@ class HomeController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
+        //$this->middleware(['auth', 'verified']);
+        $this->middleware(['verified'], [
+		    'only' => [
+			    'verify'
+		    ]
+	    ]);
     }
 
     /**
@@ -28,6 +34,11 @@ class HomeController extends Controller
     public function index()
     {
         return Redirect::action('PostsController@index');
+    }
+
+    public function verify(){
+        //use to redirect to send verify email
+        return View::make('verify');
     }
 
     public function search(Request $request){

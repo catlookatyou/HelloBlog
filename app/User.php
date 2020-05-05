@@ -10,10 +10,14 @@ use Auth;
 use App\Post as PostEloquent;
 use App\SocialUser as SocialUserEloquent;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use notifiable {
         notify as protected laravelNotify;
+    }
+
+    public function sendEmailVerificationNotification(){
+        $this->notify(new \App\Notifications\VerifyEmailQueued);
     }
 
     public function notify($instance) {

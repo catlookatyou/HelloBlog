@@ -13,8 +13,10 @@
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('search', 'HomeController@search')->name('search');
+Route::get('verifyEmail', 'HomeController@verify')->name('verify');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+//Auth::routes();
 
 //Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 //Route::post('login', 'Auth\LoginController@login');
