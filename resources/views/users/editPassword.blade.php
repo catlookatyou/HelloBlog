@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('title', '重設密碼')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">

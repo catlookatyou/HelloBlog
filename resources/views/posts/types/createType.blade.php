@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('title', '建立新分類')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">

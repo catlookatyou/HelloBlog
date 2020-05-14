@@ -16,7 +16,7 @@ use Redirect;
 class PostsController extends Controller
 {
     public function __construct(){
-	    $this->middleware(['auth', 'verified'], [
+	    $this->middleware(['auth'], [ //, 'verified'
 		    'except' => [
 			    'index', 'show'
 		    ]
@@ -34,12 +34,15 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
     public function index()
     {
+        $index = 1;
 	    $posts = PostEloquent::orderBy('created_at', 'DESC')->paginate(5);
 	    $post_types = PostTypeEloquent::orderBy('name', 'ASC')->get();
 	    $posts_total = PostEloquent::get()->count();
-	    return View::make('posts.index', compact('posts', 'post_types', 'posts_total'));
+	    return View::make('posts.index', compact('posts', 'post_types', 'posts_total', 'index'));
     }
 
     /**

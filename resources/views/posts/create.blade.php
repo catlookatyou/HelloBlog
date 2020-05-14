@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('title', '新增文章')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -85,5 +83,7 @@
         </div>
     </div>
 </div>
+<script src="<%=ResolveClientUrl('/vendor/unisharp/laravel-ckeditor/ckeditor.js')%>"></script>
+<script>CKEDITOR.replace( 'article-ckeditor' );</script>
 @stop
 

@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/test', function(){
+	$orders = App\Order::all();
+	return $orders;
+});
+
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('search', 'HomeController@search')->name('search');
 Route::get('verifyEmail', 'HomeController@verify')->name('verify');
@@ -45,4 +50,23 @@ Route::get('likes/{post_id}', 'LikeController@like')->name('like');
 Route::get('likes', 'LikeController@show')->name('showLike');
 
 Route::resource('notifications', 'NotificationsController', ['only' => ['index', 'destroy']]);
-//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/getRoomId', 'MessagesController@getRoomId')->name('getRoomId');
+Route::get('/chat/{user_b_id}', 'MessagesController@chat')->name('chat');
+Route::post('/post', 'MessagesController@post')->name('post');
+Route::get('/getAll', 'MessagesController@getAll')->name('getAll');
+
+Route::get('/items', 'ItemsController@index')->name('items');
+Route::get('/cart', 'ItemsController@cart')->name('cart');
+Route::get('/increase-one-item/{id}', 'ItemsController@increaseByOne');
+Route::get('/decrease-one-item/{id}', 'ItemsController@decreaseByOne');
+Route::get('/remove-item/{id}', 'ItemsController@removeItem');
+Route::get('/add-to-cart/{id}', 'ItemsController@AddToCart')->name('addcart');
+Route::get('/clear-cart', 'ItemsController@clearCart');
+
+Route::get('/all_orders', 'OrdersController@orders');
+Route::get('/orders', 'OrdersController@index')->name('orders');
+Route::get('/order/new', 'OrdersController@new');
+Route::post('/order/store', 'OrdersController@store');
+Route::post('/order/callback', 'OrdersController@callback');
+Route::get('/success', 'OrdersController@redirectFromECpay');

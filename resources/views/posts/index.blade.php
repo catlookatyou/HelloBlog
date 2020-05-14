@@ -1,26 +1,51 @@
-@extends('layouts.master')
-
-@section('title', '所有文章')
+@extends('layouts.app')
 
 @section('content')
 
 <div class="container">
     <div class="row">
-        <div class="col-md-1">
+        <div class="col-md-3">
+            <a href="{{ route('posts.index') }}" class="item text-dark
+            d-flex justify-content-between align-items-center {{ (isset($type))?'':'active' }} ">
+                所有文章
+                <span class="badge badge-secondary badge-light">{{ $posts_total }}</span>
+            </a>
+            <hr>
+            @foreach ($post_types as $post_type)
+                <a href="{{ route('types.show', ['id' => $post_type->id]) }}" class="item text-dark
+                d-flex justify-content-between align-items-center 
+                {{ (isset($type))?(($type->id == $post_type->id)?'active':''):'' }} ">
+                    {{ $post_type->name }}
+                    <span class="badge badge-secondary badge-light">
+                        {{ $post_type->posts->count() }}
+                    </span>
+                </a>
+                <hr>
+            @endforeach
+            @auth
+                @if(Auth::user()->isAdmin())
+                    <a href="{{ route('types.create') }}" class="btn btn-sm btn-outline-info ml-2">建立新分類</a>
+                    <br>
+                    <br>
+                @endif
+            @endauth 
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <h5>   
                 @auth
                     <div class="float-right">
                         @isset($user)
+                            <a href="{{ route('chat', ['user_b_id' => $user->id]) }}" class="btn btn-sm btn-outline-info ml-2">開始聊聊!</a>
                             <span class="badge badge-info badge-secondary m1-2">
                                 {{ count($posts) }} Posts
                             </span>
                         @endisset
+                        @isset($index)
                         <a href="{{ route('posts.create') }}" class="btn btn-sm btn-outline-info ml-2">
                             <i class="fas fa-plus"></i>
                             <span class="pl-1">新增文章</span>
                         </a>
+                        @endisset
                     </div>
                 @endauth
 
@@ -51,6 +76,10 @@
                     @endauth
                 @endisset
 
+                @isset($index)
+                    所有文章
+                @endisset
+
                 @isset($user)
                     {{ $user->name }}
                 @endisset
@@ -61,8 +90,6 @@
 
                 @isset($keyword)
                     搜尋 : {{ $keyword }}
-                @else
-                    所有文章
                 @endisset
             </h5>
             <hr />
@@ -90,7 +117,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a class="card-title text-dark" style="font-size:18px;">{{ $post->title }}</a>
+                                    <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="card-title text-dark" style="font-size:18px;">{{ $post->title }}</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -137,11 +164,6 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-8">
-                                    <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="text-center">
-                                        ...
-                                    </a>
-                                </div>
                                 <div class="col-md-4">
                                     <span class="badge badge-secondary badge-light">
                                         {{ $post->likes }}&nbsp;喜歡
@@ -159,42 +181,14 @@
             </div>
             @endforeach
         </div>
-        <div class="col-md-3">
-            <div class="position-fixed"  style="width:10%">
-                <a href="{{ route('posts.index') }}" class="item text-dark
-                d-flex justify-content-between align-items-center {{ (isset($type))?'':'active' }} ">
-                    所有文章
-                    <span class="badge badge-secondary badge-light">{{ $posts_total }}</span>
-                </a>
-                <hr>
-                @foreach ($post_types as $post_type)
-                    <a href="{{ route('types.show', ['id' => $post_type->id]) }}" class="item text-dark
-                    d-flex justify-content-between align-items-center 
-                    {{ (isset($type))?(($type->id == $post_type->id)?'active':''):'' }} ">
-                        {{ $post_type->name }}
-                        <span class="badge badge-secondary badge-light">
-                            {{ $post_type->posts->count() }}
-                        </span>
-                    </a>
-                    <hr>
-                @endforeach
-                @auth
-                    @if(Auth::user()->isAdmin())
-                        <a href="{{ route('types.create') }}" class="item text-dark">建立新分類</a>
-                    @endif
-                @endauth
-            </div>
+    </div>
+        <div class="col-md-10 offset-md-2">
+            @isset($keyword)
+                {{ $posts->appends(['keyword' => $keyword])->render() }}
+            @else
+                {{ $posts->render() }}
+            @endisset
         </div>
-        
-
-    </div>
-    <div class="col-md-10 offset-md-2">
-        @isset($keyword)
-            {{ $posts->appends(['keyword' => $keyword])->render() }}
-        @else
-            {{ $posts->render() }}
-        @endisset
-    </div>
     </div>
 </div>
 

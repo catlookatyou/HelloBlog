@@ -9,6 +9,7 @@ use URL;
 use Auth;
 use App\Post as PostEloquent;
 use App\SocialUser as SocialUserEloquent;
+use App\Message;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -62,6 +63,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function socialuser(){
 	    return $this->hasOne(SocialUserEloquent::class);
+    }
+
+    public function messages(){
+        return $this->hasMany(Message::class);
     }
 
     public function isAdmin(){

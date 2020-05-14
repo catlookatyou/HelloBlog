@@ -12,11 +12,25 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-	    UserEloquent::create([
+	    DB::table('users')->insert([
+        [
 		    'name'=>'admin',
-		    'email'=>'admin@mail.com',
-		    'password'=>bcrypt('admin'),
+		    'email'=>'cat@mail.com',
+		    'password'=>bcrypt('12345678'),
 		    'type'=>1
-	    ]);
+        ],
+        [
+		    'name'=>'dog',
+		    'email'=>'dog@mail.com',
+		    'password'=>bcrypt('12345678'),
+		    'type'=>0
+        ],
+        [
+		    'name'=>'steve',
+		    'email'=>'steve@mail.com',
+		    'password'=>bcrypt('12345678'),
+		    'type'=>0
+        ]
+    ]);
     }
 }

@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('title', '登入')
+@extends('layouts.app')
 
 @section('content')
 <div class="row justify-content-center">

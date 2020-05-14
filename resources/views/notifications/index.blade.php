@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('title', '所有通知')
+@extends('layouts.app')
 
 @section('content')
 

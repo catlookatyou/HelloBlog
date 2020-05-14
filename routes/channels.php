@@ -11,6 +11,14 @@
 |
 */
 
-Broadcast::channel('App.User.{id}', function ($user, $id) {
+/*Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
+});*/
+
+Broadcast::channel('chat.{roomId}', function ($user, $roomId) {
+    /*if ($user->canJoinRoom($roomId)) {
+        return ['id' => $user->id, 'name' => $user->name];
+    }*/
+    //return true;
+    return $user;
 });

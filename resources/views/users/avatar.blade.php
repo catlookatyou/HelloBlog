@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('title', '更換頭像')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
