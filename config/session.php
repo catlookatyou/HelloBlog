@@ -72,8 +72,8 @@ return [
     |
     */
 
-    'connection' => env('SESSION_CONNECTION', 'default'),
-
+    //'connection' => env('SESSION_CONNECTION', 'default'),
+    'connection' => 'session',
     /*
     |--------------------------------------------------------------------------
     | Session Database Table
