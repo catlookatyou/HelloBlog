@@ -67,7 +67,7 @@
             "@php artisan key:generate --ansi"
         ],
         "post-install-cmd": [
-            "@php artisan queue:listen"
+            //"@php artisan queue:listen"
         ]
     }
 }
