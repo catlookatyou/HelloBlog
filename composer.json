@@ -43,6 +43,9 @@
             "database/seeds",
             "database/factories",
             "app/ECPaySDK"
+        ],
+        "files": [
+            "app/helpers.php"
         ]
     },
     "autoload-dev": {
