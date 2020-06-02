@@ -134,21 +134,21 @@ return [
             'host' => $redisUrl['host'],
             'password' => $redisUrl['pass'],
             'port' => $redisUrl['port'],
-            'database' => env('REDIS_DB', 0),
+            //'database' => env('REDIS_DB', 0),
         ],
 
         'cache' => [
             'host' => $redisUrl['host'],
             'password' => $redisUrl['pass'],
             'port' => $redisUrl['port'],
-            'database' => env('REDIS_CACHE_DB', 1),
+            //'database' => env('REDIS_CACHE_DB', 1),
         ],
 
         'session' => [
             'host' => $redisUrl['host'],
             'password' => $redisUrl['pass'],
             'port' => $redisUrl['port'],
-            'database' => 2,
+            //'database' => 2,
         ],
 
         /*
