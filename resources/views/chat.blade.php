@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-<script src="//{{ Request::getHost() }}:80/socket.io/socket.io.js"></script>
+<script src="//{{ Request::getHost() }}:3000/socket.io/socket.io.js"></script>
 <script>var roomId = {{ $room_id }};</script>
 @section('content')
 <div class="container">
