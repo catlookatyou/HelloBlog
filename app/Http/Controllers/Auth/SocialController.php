@@ -85,7 +85,9 @@ class SocialController extends Controller
 			Auth::login($login_user);
 			return Redirect::route('index');
 		}
-		return App::abort(500);
+		return $login_user;
+
+		//return App::abort(500);
 	}
                 
 
