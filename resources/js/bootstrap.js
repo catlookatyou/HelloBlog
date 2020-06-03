@@ -50,7 +50,7 @@ window.Echo = new Echo({
     broadcaster: 'socket.io',
     //host: 'http://localhost:6001',
     csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-    host: window.location.hostname + ':6001',
+    host: window.location.hostname + ':80',
 });
 // import Echo from 'laravel-echo'
 
