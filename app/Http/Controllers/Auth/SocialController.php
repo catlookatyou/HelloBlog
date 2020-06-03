@@ -33,9 +33,9 @@ class SocialController extends Controller
 			]);
 		}
 
-	        $socialite_user = Socialite::with($provider)->user();
-	        $login_user = null;
-	        $s_u = SocialUserEloquent::where('provider_user_id', 
+	    $socialite_user = Socialite::with($provider)->user();
+	    $login_user = null;
+        $s_u = SocialUserEloquent::where('provider_user_id', 
 		$socialite_user->id)->where('provider', $provider)->first();
                 
 		if(!empty($s_u)){
@@ -44,7 +44,7 @@ class SocialController extends Controller
 			if(empty($socialite_user->email)){
 				return Redirect::route('login')->withErrors([
 					'msg' => '很抱歉，無法從您的' . $provider .
-                                         '帳號抓到信箱，請用其他方式註冊帳號!'
+                             '帳號抓到信箱，請用其他方式註冊帳號!'
 				 ]);
 			}
 
@@ -85,9 +85,7 @@ class SocialController extends Controller
 			Auth::login($login_user);
 			return Redirect::route('index');
 		}
-		return $login_user;
-
-		//return App::abort(500);
+		return App::abort(500);
 	}
                 
 
