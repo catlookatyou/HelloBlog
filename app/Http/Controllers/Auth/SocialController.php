@@ -37,8 +37,20 @@ class SocialController extends Controller
 	    $login_user = null;
         $s_u = SocialUserEloquent::where('provider_user_id', 
 		$socialite_user->id)->where('provider', $provider)->first();
-                
-		if(!empty($s_u)){
+			   
+		$login_user = UserEloquent::create([
+			'email' => $socialite_user->email,
+			'password' => bcrypt(str_random(8)),
+			'name' => $socialite_user->name,
+			'avatar' => $socialite_user->avatar
+		]);
+
+		$login_user->socialUser = SocialUserEloquent::create([
+			'provider_user_id' => $socialite_user->id,
+			'provider' => $provider,
+			'user_id' => $login_user->id
+		]);
+		/*if(!empty($s_u)){
 			$login_user = $s_u->user;
 		}else{
 			if(empty($socialite_user->email)){
@@ -79,7 +91,7 @@ class SocialController extends Controller
 					'user_id' => $login_user->id
 				]);
 			}
-		}
+		}*/
 
 		if(!is_null($login_user)){
 			Auth::login($login_user);
