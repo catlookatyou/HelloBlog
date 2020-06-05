@@ -130,6 +130,7 @@ return [
             'prefix' => '',
         ],
 
+        
         'default' => [
             'host' => $redisUrl['host'],
             'password' => $redisUrl['pass'],
@@ -150,7 +151,7 @@ return [
             'port' => $redisUrl['port'],
             //'database' => 2,
         ],
-
+        
         /*
         'default' => [
             'url' => env('REDIS_URL'),

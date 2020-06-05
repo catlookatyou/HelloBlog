@@ -37,26 +37,14 @@ class SocialController extends Controller
 	    $login_user = null;
         $s_u = SocialUserEloquent::where('provider_user_id', 
 		$socialite_user->id)->where('provider', $provider)->first();
-			   
-		$login_user = UserEloquent::create([
-			'email' => $socialite_user->email,
-			'password' => bcrypt(str_random(8)),
-			'name' => $socialite_user->name,
-			'avatar' => $socialite_user->avatar
-		]);
-
-		$login_user->socialUser = SocialUserEloquent::create([
-			'provider_user_id' => $socialite_user->id,
-			'provider' => $provider,
-			'user_id' => $login_user->id
-		]);
-		/*if(!empty($s_u)){
+                
+		if(!empty($s_u)){
 			$login_user = $s_u->user;
 		}else{
 			if(empty($socialite_user->email)){
 				return Redirect::route('login')->withErrors([
 					'msg' => '很抱歉，無法從您的' . $provider .
-                             '帳號抓到信箱，請用其他方式註冊帳號!'
+                            '帳號抓到信箱，請用其他方式註冊帳號!'
 				 ]);
 			}
 
@@ -91,7 +79,7 @@ class SocialController extends Controller
 					'user_id' => $login_user->id
 				]);
 			}
-		}*/
+		}
 
 		if(!is_null($login_user)){
 			Auth::login($login_user);
