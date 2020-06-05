@@ -10,9 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use Auth;
 Route::get('/test', function(){
-	$orders = App\Order::all();
+	$user_id = Auth::user()->id;
+	return $user_id;
+});
+
+Route::get('/test2', function(){
+	$orders = Auth::user()->orders();
 	return $orders;
 });
 
