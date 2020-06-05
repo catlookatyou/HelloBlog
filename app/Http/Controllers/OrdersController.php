@@ -59,9 +59,9 @@ class OrdersController extends Controller
             $obj->EncryptType = '1';                                                           //CheckMacValue加密類型，請固定填入1，使用SHA256加密
             //基本參數(請依系統規劃自行調整)
             $MerchantTradeNo = $uuid_temp ;
-            $obj->Send['ReturnURL']         = "https://0ee656c7.ngrok.io/order/callback" ;    //付款完成通知回傳的網址
-            $obj->Send['PeriodReturnURL']         = "https://0ee656c7.ngrok.io/order/callback" ;    //付款完成通知回傳的網址
-            $obj->Send['ClientBackURL'] = "https://0ee656c7.ngrok.io/success" ;    //付款完成通知回傳的網址
+            $obj->Send['ReturnURL']         = "http://helloblog201.herokuapp.com/order/callback" ;    //付款完成通知回傳的網址
+            $obj->Send['PeriodReturnURL']         = "http://helloblog201.herokuapp.com/order/callback" ;    //付款完成通知回傳的網址
+            $obj->Send['ClientBackURL'] = "http://helloblog201.herokuapp.com/success" ;    //付款完成通知回傳的網址
             $obj->Send['MerchantTradeNo']   = $MerchantTradeNo;                          //訂單編號
             $obj->Send['MerchantTradeDate'] = date('Y/m/d H:i:s');                       //交易時間
             $obj->Send['TotalAmount']       = $cart->totalPrice;                        //交易金額
