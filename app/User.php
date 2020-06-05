@@ -10,6 +10,7 @@ use Auth;
 use App\Post as PostEloquent;
 use App\SocialUser as SocialUserEloquent;
 use App\Message;
+use App\Order;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -67,6 +68,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function messages(){
         return $this->hasMany(Message::class);
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
 
     public function isAdmin(){

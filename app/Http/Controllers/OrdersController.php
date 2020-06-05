@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Auth;
+use Cookie;
 use App\Cart;
 use App\Order;
 use ECPay_PaymentMethod as ECPayMethod;
@@ -13,8 +15,12 @@ class OrdersController extends Controller
 {
     public function index()
     {
-        $orders = Order::all();
-        return view('store.orders', compact('orders'));
+        $orders = Auth::user()->orders();
+        $cookie1 = \Cookie::forget('laravel_session');
+        $cookie2 = \Cookie::forget('XSRF-TOKEN');
+        return view('store.orders', compact('orders'))
+                    ->withCookie($cookie1)
+                    ->withCookie($cookie2);
     }
 
     public function orders(){
@@ -39,8 +45,10 @@ class OrdersController extends Controller
             'email' => 'required',
         ]);
         $cart = session()->get('cart');
+        $user_id = Auth::user()->id;
         $uuid_temp = str_replace("-", "",substr(Str::uuid()->toString(), 0,18));
         $order = Order::create([
+            'user_id' => $user_id,
             'name' => request('name'),
             'email' => request('email'),
             'cart' => serialize($cart),
