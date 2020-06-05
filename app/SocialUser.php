@@ -8,7 +8,7 @@ use App\User as UserEloquent;
 class SocialUser extends Model
 {
 	protected $fillable = [
-		'user_id', 'provider_user_id', 'provider'
+		'id', 'user_id', 'provider_user_id', 'provider'
 	];
 
 	public function user(){
