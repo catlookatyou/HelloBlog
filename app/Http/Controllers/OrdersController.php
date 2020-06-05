@@ -15,7 +15,7 @@ class OrdersController extends Controller
 {
     public function index()
     {
-        $orders = Auth::user()->orders();
+        $orders = Auth::user()->orders;
         $cookie1 = \Cookie::forget('laravel_session');
         $cookie2 = \Cookie::forget('XSRF-TOKEN');
         return view('store.orders', compact('orders'))

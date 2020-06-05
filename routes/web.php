@@ -17,7 +17,7 @@ Route::get('/test', function(){
 });
 
 Route::get('/test2', function(){
-	$orders = Auth::user()->orders();
+	$orders = Auth::user()->orders;
 	return $orders;
 });
 
