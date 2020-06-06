@@ -130,7 +130,7 @@ return [
             'prefix' => '',
         ],
 
-        /*
+        
         'default' => [
             'host' => $redisUrl['host'],
             'password' => $redisUrl['pass'],
@@ -151,8 +151,8 @@ return [
             'port' => $redisUrl['port'],
             //'database' => 2,
         ],
-        */
         
+        /*
         'default' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
@@ -176,7 +176,7 @@ return [
             'port' => env('REDIS_PORT', 6379),
             'database' => 2,
         ],
-        
+        */
     ],
 
 ];
