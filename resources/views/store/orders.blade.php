@@ -22,12 +22,12 @@
                     <td class="border px-4 py-2">{{$order->name}}</td>
                     <td class="border px-4 py-2">
                         <ul>
-                            @foreach(@unserialize($order->cart)->items as $item)
+                            @foreach(unserialize($order->cart)->items as $item)
                             <li>{{$item['item']['name']}},{{ $item['item']['price'] }}元×{{$item['qty']}}</li>
                             @endforeach
                         </ul>
                     </td>
-                    <td class="border px-4 py-2">{{@unserialize($order->cart)->totalPrice}}元</td>
+                    <td class="border px-4 py-2">{{unserialize($order->cart)->totalPrice}}元</td>
                     @if($order->paid == 1)
                         <td class="border px-4 py-2" style="color:green">已付款</td>
                     @else
