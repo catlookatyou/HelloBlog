@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Auth;
+/*use Auth;
 Route::get('/test', function(){
 	$user_id = Auth::user()->id;
 	return $user_id;
@@ -19,7 +19,7 @@ Route::get('/test', function(){
 Route::get('/test2', function(){
 	$orders = Auth::user()->orders;
 	return $orders;
-});
+});*/
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('search', 'HomeController@search')->name('search');
