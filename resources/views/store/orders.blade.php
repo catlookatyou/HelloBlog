@@ -22,16 +22,12 @@
                     <td class="border px-4 py-2">{{$order->name}}</td>
                     <td class="border px-4 py-2">
                         <ul><!--unserialize($order->cart)-->
-                            @foreach(unserialize(preg_replace_callback ( '!s:(\d+):"(.*?)";!s', function($match) {      
-                                                return ($match[1] == strlen($match[2])) ? $match[0] : 's:' . strlen($match[2]) . ':"' . $match[2] . '";';
-                                                },$order->cart ))->items as $item)
+                            @foreach(unserialize(preg_replace_callback('!s:\d+:"(.*?)";!s', function($m) { return "s:" . strlen($m[1]) . ':"'.$m[1].'";'; }, $order->cart))->items as $item)
                             <li>{{$item['item']['name']}},{{ $item['item']['price'] }}元×{{$item['qty']}}</li>
                             @endforeach
                         </ul>
                     </td>
-                    <td class="border px-4 py-2">{{unserialize(preg_replace_callback ( '!s:(\d+):"(.*?)";!s', function($match) {      
-                                                return ($match[1] == strlen($match[2])) ? $match[0] : 's:' . strlen($match[2]) . ':"' . $match[2] . '";';
-                                                },$order->cart ))->totalPrice}}元</td>
+                    <td class="border px-4 py-2">{{unserialize(preg_replace_callback('!s:\d+:"(.*?)";!s', function($m) { return "s:" . strlen($m[1]) . ':"'.$m[1].'";'; }, $order->cart))->totalPrice}}元</td>
                     @if($order->paid == 1)
                         <td class="border px-4 py-2" style="color:green">已付款</td>
                     @else
