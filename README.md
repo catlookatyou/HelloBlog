@@ -3,6 +3,8 @@
 ### 概述
 本專案為一部落格系統，提供使用者發佈文章，也有官方商店、聊聊等功能，使用者權限分為管理員及一般使用者。以laravel + mysql作為後端開發，並以頁面渲染方式整合前後端。
 ![image](https://github.com/catlookatyou/HelloBlog/blob/master/helloblog.JPG)
+![image](https://github.com/catlookatyou/HelloBlog/blob/master/h3.JPG)
+![image]https://github.com/catlookatyou/HelloBlog/blob/master/h2.JPG)
 
 ### 功能介紹
 1.	會員註冊、登入、登出 (支援Google帳戶登入)
