@@ -58,7 +58,7 @@ class PostReplied extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->line('您有新的回應!')
-                    ->action('查看', url('/'))
+                    ->action('查看', url('/notifications'))
                     ->line('Thank you for using our application!');
     }
 

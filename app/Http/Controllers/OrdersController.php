@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Auth;
-use Cookie;
 use App\Cart;
 use App\Order;
 use ECPay_PaymentMethod as ECPayMethod;
@@ -16,11 +15,7 @@ class OrdersController extends Controller
     public function index()
     {
         $orders = Auth::user()->orders;
-        $cookie1 = \Cookie::forget('laravel_session');
-        $cookie2 = \Cookie::forget('XSRF-TOKEN');
-        return view('store.orders', compact('orders'))
-                    ->withCookie($cookie1)
-                    ->withCookie($cookie2);
+        return view('store.orders', compact('orders'));
     }
 
     public function orders(){

@@ -18,12 +18,12 @@ class User extends Authenticatable implements MustVerifyEmail
         notify as protected laravelNotify;
     }
 
-    public function sendEmailVerificationNotification(){
+    /*public function sendEmailVerificationNotification(){
         $this->notify(new \App\Notifications\VerifyEmailQueued);
-    }
+    }*/
 
     public function notify($instance) {
-        // 如果不是当前用户，就不必通知了
+        // 如果是当前用户，就不必通知了
         if($this->id == Auth::id()) {
             return;
         }

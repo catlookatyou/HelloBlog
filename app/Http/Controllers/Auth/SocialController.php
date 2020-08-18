@@ -38,10 +38,10 @@ class SocialController extends Controller
         $s_u = SocialUserEloquent::where('provider_user_id', 
 		$socialite_user->id)->where('provider', $provider)->first();
                 
-		if(!empty($s_u)){
+		if(!empty($s_u)){  //have social_user and login
 			$login_user = $s_u->user;
 		}else{
-			if(empty($socialite_user->email)){
+			if(empty($socialite_user->email)){  //cant get social account
 				return Redirect::route('login')->withErrors([
 					'msg' => '很抱歉，無法從您的' . $provider .
                             '帳號抓到信箱，請用其他方式註冊帳號!'
@@ -50,22 +50,22 @@ class SocialController extends Controller
 
 			$user = UserEloquent::where('email', $socialite_user->email)->first();
 
-			if(!empty($user)){
+			if(!empty($user)){  //have user, already register
 				$login_user = $user;
 				$s_user = $login_user->socialUser;
 
-				if(!empty($s_user)){
+				if(!empty($s_user)){  //have social_user
 					return Redirect::route('login')->withErrors([
 						'msg' => '此email已被其他帳號綁定'
 					]);
-				}else{
+				}else{  //no social_user
 					$login_user->socialUser = SocialUserEloquent::create([
 						'provider_user_id' => $socialite_user->id,
 						'provider' => $provider,
 						'user_id' => $login_user->id
 					]);
 				}
-			}else{
+			}else{  //create user
 				$login_user = UserEloquent::create([
 					'email' => $socialite_user->email,
 					'password' => bcrypt(str_random(8)),

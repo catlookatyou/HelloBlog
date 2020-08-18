@@ -16,7 +16,7 @@ use Redirect;
 class PostsController extends Controller
 {
     public function __construct(){
-	    $this->middleware(['auth'], [ //, 'verified'
+	    $this->middleware(['auth', 'verified'], [ //, 'verified'
 		    'except' => [
 			    'index', 'show'
 		    ]
