@@ -1,21 +1,17 @@
 {
-	"authHost": "http://helloblog201.herokuapp.com",
+	"authHost": "http://localhost:8000",
 	"authEndpoint": "/broadcasting/auth",
 	"clients": [],
 	"database": "redis",
 	"databaseConfig": {
-		"redis": {
-			"host": "ec2-18-213-14-94.compute-1.amazonaws.com",
-            "password": "p32d5d53cf69d20e5ada7708143fe08ffea92f0cfd4b4fd1a069228fb8454444a",
-            "port": "12309"
-		},
+		"redis": {},
 		"sqlite": {
 			"databasePath": "/database/laravel-echo-server.sqlite"
 		}
 	},
 	"devMode": true,
 	"host": null,
-	"port": "3000",
+	"port": "6001",
 	"protocol": "http",
 	"socketio": {},
 	"secureOptions": 67108864,
