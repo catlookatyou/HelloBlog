@@ -15,7 +15,7 @@
                                 標題</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control form-control-md
-                                    {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" id="title">
+                                    {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" id="title" value="{{ old('title') }}">
                                         @if($errors->has('title'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('title') }}</strong>
@@ -50,7 +50,7 @@
                                     <textarea name="content" id="article-ckeditor" rows="15"
                                     class="form-control form-control-md 
                                     {{ $errors->has('content') ? 'is-invalid' : '' }}" 
-                                    style="resize: vertical;"></textarea>
+                                    style="resize: vertical;">{{ old('content') }}</textarea>
                                     @if($errors->has('content'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('content') }}</strong>

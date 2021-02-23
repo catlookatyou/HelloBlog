@@ -11,6 +11,7 @@ class ItemsTableSeeder extends Seeder
      */
     public function run()
     {
+        /*
 	    DB::table('items')->insert([
             [
                 'name' => 'cat photo',
@@ -23,5 +24,6 @@ class ItemsTableSeeder extends Seeder
                 'price'=>10
             ]
         ]);
+        */
     }
 }
