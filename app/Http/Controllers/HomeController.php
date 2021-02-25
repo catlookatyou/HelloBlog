@@ -7,6 +7,7 @@ use App\Post as PostEloquent;
 use App\PostType as PostTypeEloquent;
 use Redirect;
 use View;
+use App\Jobs\ChangePostTitle;
 
 class HomeController extends Controller
 {
@@ -51,5 +52,9 @@ class HomeController extends Controller
 	    $post_types = PostTypeEloquent::orderBy('name', 'ASC')->get();
 	    $posts_total = PostEloquent::get()->count();
 	    return View::make('posts.index', compact('posts', 'post_types', 'posts_total', 'keyword'));
+    }
+
+    public function testjob(){
+        ChangePostTitle::dispatch();
     }
 }
