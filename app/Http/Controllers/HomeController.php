@@ -8,6 +8,7 @@ use App\PostType as PostTypeEloquent;
 use Redirect;
 use View;
 use App\Jobs\ChangePostTitle;
+use App\Events\ChangePostTitle as ChangeTitleEvent;
 
 class HomeController extends Controller
 {
@@ -56,5 +57,10 @@ class HomeController extends Controller
 
     public function testjob(){
         ChangePostTitle::dispatch();
+    }
+
+    public function testevent(){
+        $post = PostEloquent::find(9);
+        event(new ChangeTitleEvent($post));
     }
 }

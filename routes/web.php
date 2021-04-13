@@ -25,6 +25,7 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('search', 'HomeController@search')->name('search');
 Route::get('verifyEmail', 'HomeController@verify')->name('verify');
 Route::get('testjob', 'HomeController@testjob')->name('testjob');
+Route::get('testevent', 'HomeController@testevent')->name('testevent');
 
 Auth::routes(['verify' => true]);
 //Auth::routes();
