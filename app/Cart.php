@@ -80,8 +80,8 @@ class Cart extends Model
         // Update totalqty
         $this->totalQty -= $this->items[$id]['qty'];
 
-        // update total price
-        $this->totalPrice -= $this->items[$id]['qty']*$this->items[$id]['price'];
+        // update total price //$this->items[$id]['qty']*$this->items[$id]['price'];
+        $this->totalPrice -= $this->items[$id]['price'];
         // unset item
         unset($this->items[$id]);
     }
