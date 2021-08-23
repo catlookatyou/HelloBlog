@@ -60,7 +60,7 @@ Route::resource('notifications', 'NotificationsController', ['only' => ['index',
 
 Route::get('/getRoomId', 'MessagesController@getRoomId')->name('getRoomId');
 Route::get('/chat/{user_b_id}', 'MessagesController@chat')->name('chat');
-Route::post('/post', 'MessagesController@post')->name('post');
+Route::get('/post', 'MessagesController@post')->name('post');
 Route::get('/getAll', 'MessagesController@getAll')->name('getAll');
 
 Route::get('/items', 'ItemsController@index')->name('items');

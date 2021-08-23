@@ -2022,13 +2022,19 @@ __webpack_require__.r(__webpack_exports__);
     postMessage: function postMessage() {
       var _this = this;
 
-      axios.post('/post', {
-        message: this.text
-      }).then(function (_ref) {
+      axios.get('/post?message=' + this.text).then(function (_ref) {
         var data = _ref.data;
         //this.messages.push(data);
+        //console.log(data);
         _this.text = '';
       });
+      /*
+      axios.get('/post', {message: this.text}).then(({data}) => {
+          //this.messages.push(data);
+          //console.log(data);
+          this.text = '';
+      });
+      */
     }
   },
   created: function created() {
@@ -48789,7 +48795,7 @@ var render = function() {
       _vm._l(_vm.messages, function(ref) {
         var name = ref.name
         var content = ref.content
-        return _c("li", { staticClass: "message" }, [
+        return _c("li", { key: name, staticClass: "message" }, [
           _vm._v(_vm._s(name) + ": " + _vm._s(content))
         ])
       }),
@@ -61156,6 +61162,7 @@ try {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.withCredentials = true;
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -61181,8 +61188,9 @@ if (token) {
 window.io = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'socket.io',
-  host: 'http://localhost:6001' //host: window.location.hostname + ':6001',
-
+  //host: 'http://localhost:6001',
+  //csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+  host: window.location.hostname + ':3000'
 }); // import Echo from 'laravel-echo'
 // window.Pusher = require('pusher-js');
 // window.Echo = new Echo({
@@ -61281,8 +61289,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\cat\Desktop\Apache24\htdocs\HelloBlog\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\cat\Desktop\Apache24\htdocs\HelloBlog\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /mnt/c/Users/cat/Desktop/Apache24/htdocs/HelloBlog/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /mnt/c/Users/cat/Desktop/Apache24/htdocs/HelloBlog/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

@@ -13,11 +13,11 @@
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{$errors->has('email')?'is-invalid' : ''}}"
                                 name="email" value="{{old('email')}}" required autofocus>
-                                @if($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
+                                <!--@if($errors->has('email'))
+                                    <span class="text-danger invalid-feedback" role="alert">
                                         <strong>{{$errors->first('email')}}</strong>
                                     </span>
-                                @endif
+                                @endif-->
                             </div>
                         </div>
 
@@ -26,14 +26,21 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{$errors->has('password')?'is-invalid' : ''}}"
                                 name="password" required>
-                                @if($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
+                                <!--@if($errors->has('password'))
+                                    <p>{{$errors->password}}<p>
+                                    <span class="text-danger invalid-feedback" role="alert">
                                         <strong>{{$errors->first('password')}}</strong>
                                     </span>
-                                @endif
+                                @endif-->
                             </div>
                         </div>
 
+                        @if($errors->has('email') || $errors->has('password'))
+                            <div class="form-group row">
+                                <p class="text-danger offset-md-4">信箱或密碼錯誤!</p>
+                            </div>
+                        @endif
+                        
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

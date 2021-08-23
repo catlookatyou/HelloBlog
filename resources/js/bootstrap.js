@@ -23,6 +23,7 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+axios.defaults.withCredentials = true;
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -49,7 +50,7 @@ window.io = require('socket.io-client');
 window.Echo = new Echo({
     broadcaster: 'socket.io',
     //host: 'http://localhost:6001',
-    csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    //csrfToken: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     host: window.location.hostname + ':3000',
 });
 // import Echo from 'laravel-echo'

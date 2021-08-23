@@ -90,10 +90,13 @@ class MessagesController extends Controller
     }
     
     // Allows us to post new message
-    public function post() {
+    public function post(Request $request) {
+        if(!$request->message){
+            return;
+        }
         $message = new Message();
         //content
-        $content = request('message');
+        $content = $request->message;
         $message->content = $content;
         //sent_from
         $message->user_id = Auth::id();

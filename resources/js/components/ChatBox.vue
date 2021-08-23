@@ -7,7 +7,7 @@
         </virtual-list>-->
 
         <ul>
-            <li class="message" v-for="{name, content} in messages">{{ name }}: {{ content }}</li>
+            <li class="message" v-for="{name, content} in messages" :key="name">{{ name }}: {{ content }}</li>
         </ul>
 
         <hr>
@@ -32,10 +32,18 @@
         },
         methods: {
             postMessage() {
-                axios.post('/post', {message: this.text}).then(({data}) => {
+                axios.get('/post?message=' + this.text).then(({data}) => {
                     //this.messages.push(data);
+                    //console.log(data);
                     this.text = '';
                 });
+                /*
+                axios.get('/post', {message: this.text}).then(({data}) => {
+                    //this.messages.push(data);
+                    //console.log(data);
+                    this.text = '';
+                });
+                */
             }
         },
         created() {
