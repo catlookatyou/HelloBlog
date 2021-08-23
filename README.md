@@ -20,8 +20,8 @@
 
 ### 學到的技術
 1.	Laravel MVC架構開發(路由及controller撰寫、migrate、model及seeder撰寫、blade語法、composer及php artisan指令、debug等) 
-2.	第三方API串接(Google OAuth、綠界)
-3.	Laravel Broadcasting、Redis、Socket.io、event的使用(使用者可即時發出、收到訊息)
-4.	Session的使用(購物車系統)、Redis儲存Session
+2.	Laravel Broadcasting、Redis、Socket.io、event的使用(使用者可即時發出、收到訊息)
+3.	Session的使用(購物車系統)、Redis儲存Session
+4.	第三方API串接(Google OAuth、綠界)
 5.	Laravel notifications、queue、email vertification的使用
 6.  將專案部署至AWS EC2
