@@ -62,16 +62,16 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
+                            <!--<li class="nav-item">
                             <a href="{{ route('items') }}" class="btn btn-sm btn-outline-info my-2">商品
                             </a>
-                            </li>
+                            </li>-->
                             <li class="nav-item">
-                                <a href="{{ route('chat', ['user_b_id' => 0]) }}" class="btn btn-sm btn-outline-info my-2">聊聊!
+                                <a href="{{ route('chat', ['user_b_id' => 0]) }}" class="btn btn-sm btn-outline-info my-2 mx-2">聊聊!
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('notifications.index') }}" class="btn btn-sm btn-outline-info my-2">通知:{{ Auth::user()->notification_count }}
+                                <a href="{{ route('notifications.index') }}" class="btn btn-sm btn-outline-info my-2 mr-2">通知:{{ Auth::user()->notification_count }}
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -92,12 +92,12 @@
                                 <a class="dropdown-item" href="{{ route('showLike') }}">
                                     喜歡的文章
                                 </a>
-                                <a class="dropdown-item" href="{{ route('cart') }}">
+                                <!--<a class="dropdown-item" href="{{ route('cart') }}">
                                     購物車
                                 </a>
                                 <a class="dropdown-item" href="{{ route('orders') }}">
                                     訂單紀錄
-                                </a>
+                                </a>-->
                                 <a class="dropdown-item" href="{{ route('users.editName') }}">
                                     修改名稱
                                 </a>

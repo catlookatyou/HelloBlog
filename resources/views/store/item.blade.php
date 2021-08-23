@@ -10,11 +10,12 @@
                     <div class="container-fluid p-0">
                         @foreach($items as $item)
                             <li>
-                                <a>{{ $item->name }}</a>
-                                <a>{{ $item->content }}</a>
+                                <a>{{ $item->name }}</a> |
+                                <a>{{ $item->content }}</a> |
                                 <a>$ {{ $item->price }}</a>
-                                <a href="{{ route('addcart', ['id' => $item->id]) }}"><button>add to cart</button></a>
+                                <a href="{{ route('addcart', ['id' => $item->id]) }}"><button class="btn btn-sm btn-outline-info ml-2">加入購物車</button></a>
                             </li>
+                            <br>
                         @endforeach
                     </div>
                 </div>
