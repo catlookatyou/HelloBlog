@@ -103,7 +103,7 @@ class MessagesController extends Controller
         //room_id
         $message->room_id = Auth::user()->room_id;
         $message->save();
-
+        
         //user
         //$user = Auth::user();
         //$user->room_id = 1;

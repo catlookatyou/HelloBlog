@@ -60,8 +60,7 @@
             Echo.join('chat.${this.roomId}')
                 .here((users) => {
                         console.log(users);
-                    })   
-               
+                    })         
         },
         mounted() { 
             Echo.join(`chat.${this.roomId}`).listen('.message.sent', (e) => {
