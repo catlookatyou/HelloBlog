@@ -13,6 +13,7 @@ class PostReplied extends Notification implements ShouldQueue
     use Queueable;
 
     public $comment;
+    public $tries = 3;
 
     /**
      * Create a new notification instance.
